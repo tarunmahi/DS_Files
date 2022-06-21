@@ -1,45 +1,39 @@
+
+
 #include<stdio.h>
 #include<stdlib.h>
 
-struct Node{
+struct node{
     int data;
-    struct Node*next;
-
+    struct node*next;
 };
-struct Node*head;
-void insert(int x){
-    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+struct node* head;
+void insert (int x){
+    struct node*temp =(struct node*)malloc(sizeof(struct node));
     temp->data=x;
-    temp->next=NULL;
-    
-    if (head!=NULL)
-    {
-        temp->next=head;
-    }
+    temp->next=head;
     head=temp;
 }
 void print(){
-    struct Node*temp=head;
-    printf("the linked list is");
-    while (temp!=NULL)
-    {
+    struct node*temp=head;
+    while(temp!=NULL){
         printf("%d",temp->data);
         temp=temp->next;
+
     }
     printf("\n");
-    
 }
 int main(){
     head=NULL;
-    int n,i,x;
-    printf("how many elements to add ");
+    printf("enter elemenets");
+    int i,n,j;
     scanf("%d",&n);
-    for ( i = 0; i < n; i++)
-    {
-        printf("enter the element");
-        scanf("%d",&x);
-        insert(x);
+    for(i=0;i<n;i++){
+        printf("element : ");
+        scanf("%d",&j);
+        insert(j);
         print();
     }
-    
+
+
 }
