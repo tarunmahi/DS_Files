@@ -1,4 +1,3 @@
-//linked list deletion of node at position n
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
@@ -7,36 +6,22 @@ struct node{
 };
 struct node*head;
 void insert(int x,int pos){
-    struct node*temp1=(struct node*)malloc(sizeof(struct node));
+    struct node*temp1 = (struct node*)malloc(sizeof(struct node));
     temp1->data=x;
     temp1->next=NULL;
     if(pos==1){
         temp1->next=head;
         head=temp1;
-        return;}
-    struct node*temp2=head;
+        return;
+    }
     int i;
-    for ( i = 0; i < pos-2; i++)
-    {
-      temp2=temp2->next;
+    struct node*temp2=head;
+    for(i=0;i<pos-2;i++){
+        temp2=temp2->next;
     }
     temp1->next=temp2->next;
     temp2->next=temp1;
-    }
-void delete(int x){
-    struct node*temp1=head;
-    int i;
-    if(x==1){
-        head=temp1->next;
-        free(temp1);
-        return;
-    }
-    for(i=0;i<x-2;i++){
-      temp1=temp1->next;
-    }
-    struct node*temp2=temp1->next;
-    temp1->next=temp2->next;
-    free(temp2);
+    printf("\n");
 }
 void print(){
     struct node*temp=head;
@@ -47,16 +32,45 @@ void print(){
     }
     
 }
+void reverse(){
+    struct node*current,*prev,*next;
+    current=head;
+    prev=NULL;
+    while (current!=NULL)
+    {
+        next=current->next;
+        current->next=prev;
+        prev=current;
+        current=next;
+    }
+    head=prev;
+    printf("\n");
+}
+void delete(int pos){
+    struct node*temp1=head;
+    if(pos==1){
+        head=temp1->next;
+        free(temp1);
+    }
+    int i;
+    for ( i = 0; i < pos-2; i++)
+    {
+        temp1=temp1->next;
+    }
+    struct node*temp2=temp1->next;
+    temp1->next=temp2->next;
+    free(temp2);
+    printf("\n");
+}
 int main(){
     head=NULL;
-    insert(6,1);
-insert(1,1);;
-insert(7,1);
-insert(5,3);
-print();
-printf("\n");
-delete(2);
-delete(1);
-delete(2);
-print();
+    insert(3,1);
+    insert(4,1);
+    insert(7,2);
+    insert(8,4);
+    print();
+    reverse();
+    print();
+    delete(2);
+    print();
 }
