@@ -23,7 +23,6 @@ void insert(int x,int pos){
     temp1->next=temp2->next;
     temp2->next=temp1;
     }
-
 void delete(int x){
     struct node*temp1=head;
     int i;
@@ -32,13 +31,12 @@ void delete(int x){
         free(temp1);
         return;
     }
-    for(i=0;i=x-2;i++){
-        temp1=temp1->next;
+    for(i=0;i<x-2;i++){
+      temp1=temp1->next;
     }
     struct node*temp2=temp1->next;
     temp1->next=temp2->next;
     free(temp2);
-
 }
 void print(){
     struct node*temp=head;
@@ -52,7 +50,7 @@ void print(){
 int main(){
     head=NULL;
     insert(6,1);
-insert(1,1);
+insert(1,1);;
 insert(7,1);
 insert(5,3);
 print();
