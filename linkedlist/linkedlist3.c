@@ -72,6 +72,5 @@ print();
 
 delete(2);
 delete(1);
-delete(1);
 print();
 }
