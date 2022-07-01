@@ -16,6 +16,7 @@ struct node*getnode(int x){
     temp1->next=NULL;
     return temp1;
 }
+//insert at beginning function
 void insertb(int x){
     struct node*temp1=getnode(x);
     if(head==NULL){
