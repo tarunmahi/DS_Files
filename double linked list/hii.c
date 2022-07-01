@@ -67,7 +67,26 @@ void reverse(){
         printf("%d -> ",temp->data);
         temp=temp->prev;
     }
-
+}
+//delete function for the linked list
+void delete(int pos){
+    struct node *curr ,*next;
+    struct node*temp=head;
+    int i;
+    if(pos==1){
+        head=temp->next;
+        free(temp);
+        return;
+    }
+    for ( i = 0; i < pos-2; i++)
+    {
+        temp=temp->next;
+    }
+    curr=temp->next;
+    next=curr->next;
+    temp->next=curr->next;
+    next->prev=curr->prev;
+    printf("\n");
     
 }
 //main function--
@@ -80,4 +99,7 @@ int main(){
     inserte(10);
     print();
     reverse();
+    delete(1);
+    delete(3);
+    print();
 }
