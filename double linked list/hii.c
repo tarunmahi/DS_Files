@@ -17,11 +17,14 @@ struct node*getnode(int x){
     return temp1;
 }
 void insertb(int x){
-    struct node*temp=head;
     struct node*temp1=getnode(x);
-    if(head=NULL){
-        
+    if(head==NULL){
+        head=temp1;
+        return;
     }
+    head->prev=temp1;
+    temp1->next=head;
+    head=temp1;
 }
 //insert at ending function
 void inserte(int x){
@@ -38,6 +41,7 @@ void inserte(int x){
     temp2->prev=temp;
     temp->next=temp2;
 }
+//print function /traversing call function
 void print(){
     struct node*temp=head;
     while (temp!=NULL)
@@ -52,7 +56,9 @@ void print(){
 int main(){
     head=NULL;
     inserte(5);
+    insertb(2);
     inserte(4);
+    insertb(8);
     inserte(10);
     print();
 }
