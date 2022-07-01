@@ -1,18 +1,22 @@
 #include<stdio.h>
 #include<stdlib.h>
+//initialize pointer variables
 struct node{
     int data;
-    struct node*next;
     struct node*prev;
+    struct noode*next;
 };
-struct node*head;
+struct node*head;//initialize head as a global variable..
+
+//node generating function used to create a node whenever called..
 struct node*getnode(int x){
-    struct node*temp=(struct node*)malloc(sizeof(struct node));
-    temp->data=x;
-    temp->prev=NULL;
-    temp->next=NULL;
-    return temp;
+    struct node*temp1 = (struct node*)malloc(sizeof(struct node));
+    temp1->data=x;
+    temp1->prev=NULL;
+    temp1->next=NULL;
+    return temp1;
 }
+//insert at beginning function
 void insertb(int x){
     struct node*temp1=getnode(x);
     if(head==NULL){
@@ -22,42 +26,51 @@ void insertb(int x){
     head->prev=temp1;
     temp1->next=head;
     head=temp1;
-    printf("\n");
 }
+//insert at ending function
 void inserte(int x){
-    struct node*temp3 = getnode(x);
-    struct node*temp4=head;
-    while (temp4->next!=NULL)
-    {
-        temp4=temp4->next;
-    }
-    temp4->next=temp3;
-    temp3->prev=temp4;
-    
-}
-void reverse(){
     struct node*temp=head;
-    if(temp==NULL)return;
+    struct node*temp2 = getnode(x);
+    if(head==NULL){
+        head=temp2;
+        return;
+    }
+    
     while(temp->next!=NULL){
         temp=temp->next;
     }
-    printf("reverse list");
+    temp2->prev=temp;
+    temp->next=temp2;
+}
+//print function /traversing call function
+void print(){
+    struct node*temp=head;
+    while (temp!=NULL)
+    {
+        printf("%d -> ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+    
+}
+//reverse function by travesing from end of list using prev* pointer 
+void reverse(){
+    struct node*temp=head;
+    printf("\n");
+    if(temp==NULL)return;
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    printf("reversed list : ");
     while(temp!=NULL){
         printf("%d -> ",temp->data);
         temp=temp->prev;
     }
-    printf("\n");
 }
-void print(){
-    struct node*temp2=head;
-    while(temp2!=NULL){
-       printf("%d ->",temp2->data);
-       temp2=temp2->next;
-    }
-    printf("\n");
-}
+//delete function for the linked list
 void delete(int pos){
-    struct node*curr ,*next;
+    struct node *curr ,*next;
     struct node*temp=head;
     int i;
     if(pos==1){
@@ -73,22 +86,20 @@ void delete(int pos){
     next=curr->next;
     temp->next=curr->next;
     next->prev=curr->prev;
-    free(curr);
-
+    printf("\n");
     
 }
+//main function--
 int main(){
     head=NULL;
-    insertb(5);
-    insertb(1);
-    insertb(6);
-    insertb(90);
-    print();
+    inserte(5);
+    insertb(2);
     inserte(4);
+    insertb(8);
+    inserte(10);
     print();
     reverse();
-   delete(2);
-   delete(3);
-   delete(1);
-   print();
+    delete(1);
+    delete(3);
+    print();
 }
