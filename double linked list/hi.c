@@ -49,6 +49,26 @@ void reverse(){
     }
     printf("\n");
 }
+void delete(int pos){
+    struct node*curr ,*prev,*next;
+    struct node*temp=head;
+    if(pos==1){
+        head=temp->next;
+        free(temp);
+        return;
+    }
+    int i;
+    for(i=0;i<pos-2;i++){
+        temp=temp->next;
+    }
+    curr=temp->next;
+    next=curr->next;
+    temp->next=curr->next;
+    next->prev=curr->prev;
+
+
+
+}
 int main(){
     head=NULL;
     inserthead(3);
@@ -56,5 +76,7 @@ int main(){
     inserthead(8);
     inserthead(9);
     print();
-reverse();
+    delete(3);
+    print();
+
 }
