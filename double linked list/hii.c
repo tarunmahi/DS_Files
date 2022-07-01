@@ -53,6 +53,23 @@ void print(){
     printf("\n");
     
 }
+//reverse function by travesing from end of list using prev* pointer 
+void reverse(){
+    struct node*temp=head;
+    printf("\n");
+    if(temp==NULL)return;
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    printf("reversed list : ");
+    while(temp!=NULL){
+        printf("%d -> ",temp->data);
+        temp=temp->prev;
+    }
+
+    
+}
 //main function--
 int main(){
     head=NULL;
@@ -62,4 +79,5 @@ int main(){
     insertb(8);
     inserte(10);
     print();
+    reverse();
 }
