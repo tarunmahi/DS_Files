@@ -6,77 +6,38 @@ struct node{
     struct node*prev;
 };
 struct node*head;
-
-struct node*newnode(int x){
-    struct node*temp =(struct node*)malloc(sizeof(struct node));
+struct node*getnode(int x){
+    struct node*temp=(struct node*)malloc(sizeof(struct node));
     temp->data=x;
-    temp->next=NULL;
     temp->prev=NULL;
+    temp->next=NULL;
     return temp;
 }
-void inserthead(int x){
-    struct node*temp= newnode(x);
+void insertb(int x){
+    struct node*temp1=getnode(x);
     if(head==NULL){
-        head=temp;
+        head=temp1;
         return;
     }
-    head->prev=temp;
-    temp->next=head;
-    head=temp;
+    head->prev=temp1;
+    temp1->next=head;
+    head=temp1;
     printf("\n");
 }
 void print(){
-    struct node*temp=head;
-    while (temp!=NULL)
-    {
-        printf("%d -> ",temp->data);
-        temp=temp->next;
-    }
-    
-}
-void reverse(){
-    printf("\n");
-    struct node*temp=head;
-    if(temp==NULL)return;
-    while(temp->next!=NULL){
-        temp=temp->next;
-    }
-    printf("reverse ");
-    printf("\n");
-    while(temp!=NULL){
-        printf("%d -> ",temp->data);
-        temp=temp->prev;
+    struct node*temp2=head;
+    while(temp2!=NULL){
+       printf("%d",temp2->data);
+       temp2=temp2->next;
     }
     printf("\n");
-}
-void delete(int pos){
-    struct node*curr ,*prev,*next;
-    struct node*temp=head;
-    if(pos==1){
-        head=temp->next;
-        free(temp);
-        return;
-    }
-    int i;
-    for(i=0;i<pos-2;i++){
-        temp=temp->next;
-    }
-    curr=temp->next;
-    next=curr->next;
-    temp->next=curr->next;
-    next->prev=curr->prev;
-
-
-
 }
 int main(){
     head=NULL;
-    inserthead(3);
-    inserthead(5);
-    inserthead(8);
-    inserthead(9);
-    print();
-    delete(3);
+    insertb(5);
+    insertb(1);
+    insertb(6);
+    insertb(90);
     print();
 
 }
