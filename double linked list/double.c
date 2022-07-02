@@ -27,6 +27,25 @@ void insertb(int x){
     temp1->next=head;
     head=temp1;
 }
+//function to add node at nth position---
+void ins(int x , int pos ){
+    struct node*temp=head ,*next;
+   struct node*curr=getnode(x);
+   if(pos==1){
+    head=temp;
+    return;
+   }
+   int i;
+   for ( i = 0; i < pos-2; i++)
+   {
+    temp=temp->next;
+   }
+   next=temp->next;
+   curr->next=temp->next;
+   curr->prev=temp;
+   temp->next=curr;
+   next->prev=curr;
+}
 //insert at ending function
 void inserte(int x){
     struct node*temp=head;
@@ -101,5 +120,7 @@ int main(){
     reverse();
     delete(1);
     delete(3);
+    print();
+    ins(43,2);
     print();
 }
