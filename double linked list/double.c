@@ -38,7 +38,7 @@ void ins(int x , int pos ){
    int i;
    for ( i = 0; i < pos-2; i++)
    {
-    temp=temp->next;
+    temp=temp->next;;
    }
    next=temp->next;
    curr->next=temp->next;
