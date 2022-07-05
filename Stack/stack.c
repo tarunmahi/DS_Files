@@ -1,42 +1,42 @@
+//stack array based implementation
+
 #include<stdio.h>
-#include<stdlib.h>
-struct node{
-    int data;
-    struct node*next;
-    struct node*prev;
-};
-struct node*head;
-struct node *getnode(int x){
-    struct node*newnode =(struct node*)malloc(sizeof(struct node));
-    newnode->data=x;
-    newnode->prev=NULL;
-    newnode->next=NULL;
-    return newnode;
-}
-void insert(int x,int pos){
-    struct node*next;
-    struct node*temp1=head;
-    struct node*temp2 = getnode(x);
-    if (pos==1)
-    {
-        head=temp2;
+#define MAX_SIZE 101
+int a[MAX_SIZE];
+int top =-1;
+
+void push(int x){
+    if(top==MAX_SIZE-1){
+        printf("stack overflow error\n");
         return;
     }
-    int i;
-    for ( i = 0; i < pos-2; i++)
-    {
-        temp1=temp1->next;
+    a[++top] =x;
+}
+void pop(){
+    if(top==-1){
+        printf("stack underflow error \n");
+        return;
     }
-    
+    top--;
 
-    
-
-    
+}
+void print(){
+    int i ;
+    printf("stack is ");
+    for(i=0;i<=top;i++){
+        printf(" %d => ",a[i]);
+    }
+    printf("\n");
 }
 int main(){
-    head=NULL;
-    insert(5,1);
-    insert(56,2);
-    insert(95,1);
+    push(5);
+    print();
+    push(12);
+    print();
+    push(1);
+    print();
+    pop();
+    print();
+    push(7);
     print();
 }
