@@ -32,26 +32,6 @@ void isempty(){
     if(top==NULL)printf("\n true");
     else printf("false") ;
 }
-void reverse(){
-    struct node*prev,*curr,*next;
-    prev=top;
-    while(curr!=NULL){
-    curr=prev->link;
-    next=curr->link;
-    curr->link=prev;
-    next->link=curr;
-    prev=curr;
-    curr=next;
-    }
-    top=prev;
-    struct node*temp=top;
-    while(top!=NULL){
-        printf("%d => ",temp->data);
-        temp=temp->link;
-    }
-    printf("\n");
-
-}
 int main(){
     push(12);
     push(87);
@@ -61,6 +41,4 @@ int main(){
     print();
     topval();
     isempty();
-    reverse();
-    print();
 }
