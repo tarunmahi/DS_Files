@@ -57,7 +57,7 @@ stack is
 7 
 stack is
 7 9
-stack is
+stack is 
 7
 stack is
-7 90*/
+7 90 */
