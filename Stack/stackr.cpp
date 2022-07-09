@@ -3,7 +3,8 @@
 using namespace std;
 
 void func(int (*c)[2][3]){
-    printf("%d ",c[0][0][1]);
+    printf("%d \n",&c[0][1][1]);
+    printf("tarun ");
 }
 
 int main(){
