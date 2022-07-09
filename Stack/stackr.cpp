@@ -2,16 +2,12 @@
 #include<cstring>
 using namespace std;
 
-void print(char*x ,int y){
-    while (x!='\0')
-    {
-        
-    }
-    
+void func(int (*c)[2][3]){
+    printf("%d ",c[0][0][1]);
 }
+
 int main(){
-    char c[]="TARUN";
-    int size = strlen(c);  
-    print(c,size);
+    int c[1][2][3] = {{{2,5,13},{7,6,10}}};
+    func(c);
 
 }
