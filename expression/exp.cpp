@@ -1,34 +1,32 @@
 #include<iostream>
 #include<stack>
-#include<cstring>
+#include<string>
 using namespace std;
-bool areparser(char a,char b){
-    if(a=='('&&b==')')return true;
-    else if(a=='{'&&b=='}')return true;
-    else if(a=='['&&b==']')return true;
-    return false;
+//matching of closure in stack and popping it..
+bool sameas(char a, char b){
+   if(a=='('&&b==')')return true;//condition for () closure
+   else if(a=='['&&b==']')return true;//condition for [] closure
+   else if(a=='{'&&b=='}')return true;//condition for {} closure
+   return false; //if closure is not found 
 }
-bool isexpression(string ex){
-    stack<char> s;
-    for (int i = 0; i < ex.length(); i++)
-    {
-       if(ex[i]=='('||ex[i]=='{'||ex[i]=='[') 
-       s.push(ex[i]);
-       else if(ex[i]==')'||ex[i]=='}'||ex[i]==']'){
-        if(s.empty()||!areparser(s.top(),ex[i]))
-        return false;
-        else s.pop();
-       }
-    }
-    return s.empty()? true:false;
-
+//test conditions and stack implementation
+bool issame(string val){
+        stack <char> s; //stack of type char
+        for(int i=0;i<val.length();i++){
+            if(val[i]=='['||val[i]=='('||val[i]=='{') s.push(val[i]);//push open char symblos on stack
+            else if(val[i]==']'||val[i]==')'||val[i]=='}'){
+                if(s.empty()||!sameas(s.top(),val[i])) return false;//if stack is empty or values of top and below stack dont match
+                else s.pop();//if closure is same pop the items;
+            }
+        }
+        return s.empty()?true:false; //after iterating all elements in stack
 }
+//main function
 int main(){
-    string exp;
-    printf("enter the expression : ");
-    cin>>exp;
-    if(isexpression(exp))
-        printf("balanced eq..");
-    else printf("unbalanced");
-
+    string expr; //value of expressions
+    cout<<"enter the expression";
+    cin>>expr;
+    if(issame(expr))cout<<"balanced eq ";
+    else  cout<<"unbalanced";
+    
 }
