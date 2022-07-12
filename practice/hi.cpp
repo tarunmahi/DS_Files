@@ -19,26 +19,23 @@ void push(int x){
     top=temp;
 };
 void rev(){
-    node*temp=top;
-    if(top==NULL)return;
-    stack<node *>s;
+    struct node*temp=top;
+    stack<node *> s;
     while (temp!=NULL)
     {
         s.push(temp);
         temp=temp->link;
     }
-    struct node*temp1 =s.top();
-    top=temp1;
+    temp=s.top();
+    top=temp;
     s.pop();
     while (!s.empty())
     {
-        temp1->link=s.top();
+        temp->link=s.top();
         s.pop();
-        temp1=temp1->link;
+        temp=temp->link;
     }
-    temp1->link=NULL;
-    
-
+    temp->link=NULL;
     
 }
 void print(){
@@ -47,10 +44,7 @@ void print(){
     {
         printf("%d ",temp->data);
         temp=temp->link;
-
     }
-    printf("\n");
-    
 }
 
 int main(){
@@ -58,6 +52,7 @@ int main(){
     push(50);
     push(24);
     push(11);
+    print();
     rev();
     print();
 }
