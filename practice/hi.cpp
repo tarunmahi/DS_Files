@@ -5,7 +5,7 @@ struct node{
     int data;
     node*link;
 };
-node*top;
+node*top; 
 void push(int x){
     node*temp=new node();
     temp->data=x;
@@ -46,7 +46,6 @@ void print(){
         temp=temp->link;
     }
 }
-
 int main(){
     top=NULL;
     push(50);
