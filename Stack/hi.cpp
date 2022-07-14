@@ -20,7 +20,7 @@ void push(int x){
     top=temp;
 }
 void print(){
-    node*temp=top;
+    node*temp=top ;;
     while (temp!=NULL)
     {
         printf("%d \n",temp->data);
