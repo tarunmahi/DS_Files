@@ -4,7 +4,7 @@ using namespace std;
 int cash=100;
 
 void play(int bet){
-    int temp;
+    int temp;;
     char c[3]={'J','Q','K'};
     printf("shuffling  \n");
     srand(time(NULL));
