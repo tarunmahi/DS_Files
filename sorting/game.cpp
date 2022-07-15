@@ -7,7 +7,7 @@ void play(int bet){
     int temp;;
     char c[3]={'J','Q','K'};
     printf("shuffling  \n");
-    srand(time(NULL));
+    srand(time(NULL));;
     for(int i=0;i<5;i++){
         int x = rand()%3;
         int y =rand()%3;
