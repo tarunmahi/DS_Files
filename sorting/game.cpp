@@ -1,41 +1,29 @@
 #include<iostream>
-#include<time.h>
+#include<stack>
+#include<cstring>
 using namespace std;
-int cash=100;
 
-void play(int bet){
-    int temp;;
-    char c[3]={'J','Q','K'};
-    printf("shuffling  \n");
-    srand(time(NULL));;
-    for(int i=0;i<5;i++){
-        int x = rand()%3;
-        int y =rand()%3;
-        temp=c[x];
-        c[x]=c[y];
-        c[y]=temp;
+bool ismatch(char a, char b){
+    if(a=='('&&a==')')return true;
+    else if(a=='['&&a==']')return true;
+    else if(a=='{'&&a=='}')return true;
+else return false;
+}
+bool expression(string val){
+    stack <char> s;
+    for(int i=0;i<val.length();i++){
+        if(val[i]=='('||val[i]=='{'||val[i]=='[')s.push(val[i]);
+        else if(val[i]==')'||val[i]=='}'||val[i]==']'){
+        if(s.empty()||!ismatch(s.top(),val[i]))return false;
+       else s.pop();   
     }
-    int guess;
-    printf("enter the guess : ");
-    scanf("%d",&guess);
-    if(c[guess-1]=='Q'){
-        cash+=3*bet;
-        printf("you won the game the order is %c,%c,%c and cash is %d \n ",c[0],c[1],c[2],cash);
     }
-    else{
-        cash-=bet;
-        printf("you have lost the bet order is %c,%c,%c and cash is %d \n ",c[0],c[1],c[2],cash);
-    }
-
+   return s.empty()?true:false;
 }
 int main(){
-    int bet;
-    printf("virtual casino \n");
-    while(cash>0){
-    printf("enter the bet amount : ");
-    scanf("%d",&bet);
-    if(bet==0||bet>cash)break;
-    play(bet);
-    }
-
+    string exp;
+    printf("enter a expression : ");
+   cin>>exp;
+    if(expression(exp))printf("eq is balanced..");
+    printf("unbalanced equation..");
 }
