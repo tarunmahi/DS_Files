@@ -106,4 +106,3 @@ int main()
    Q.Enqueue(6);  Q.Print();
    Q.Dequeue();	  Q.Print();
    Q.Enqueue(8);  Q.Print();
-}
