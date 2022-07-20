@@ -27,7 +27,7 @@ bstnode* insert(bstnode* root,int x){
 bool search(bstnode* root,int num){
 if(root==NULL)return false;
 else if(root->data==num)return true;
-else if(num<=root->data)return search(root->left,num);
+else if(num<=root->data)return(search(root->left,num));
 else return search(root->right,num);
 }
 
