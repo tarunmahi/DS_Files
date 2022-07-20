@@ -31,7 +31,14 @@ else if(num<=root->data)return(search(root->left,num));
 else return search(root->right,num);
 }
 int findmax(bstnode*root){
-    
+    if(root==NULL){
+        cout<<"tree is empty \n";
+        return 0;
+    }
+    else if(root->left=NULL){
+        return root->data ;
+        }
+    return findmax(root->left);
 }
 
 int main(){
@@ -41,11 +48,6 @@ int main(){
     root=insert(root,25);
     root=insert(root,11);
     root=insert(root,17);
-    int num;
-    cout<<"enter the number to search ";
-    cin>>num;
-    if(search(root,num)==true)cout<<"number is found" ;
-    else cout<<"number is not found";
     int max =findmax(root);
     cout<<"the maximum number is :"<<max;
 
