@@ -30,6 +30,9 @@ else if(root->data==num)return true;
 else if(num<=root->data)return(search(root->left,num));
 else return search(root->right,num);
 }
+int findmax(bstnode*root){
+    
+}
 
 int main(){
     bstnode*root=NULL;
@@ -43,6 +46,8 @@ int main(){
     cin>>num;
     if(search(root,num)==true)cout<<"number is found" ;
     else cout<<"number is not found";
+    int max =findmax(root);
+    cout<<"the maximum number is :"<<max;
 
 
 }
