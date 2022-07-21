@@ -35,10 +35,10 @@ int findmax(bstnode*root){
         cout<<"tree is empty \n";
         return 0;
     }
-    else if(root->left=NULL){
-        return root->data ;
-        }
-    return findmax(root->left);
+    while(root->left!=NULL){
+        root=root->left;
+    }
+    return root->data;
 }
 
 int main(){
@@ -48,8 +48,10 @@ int main(){
     root=insert(root,25);
     root=insert(root,11);
     root=insert(root,17);
-    int max =findmax(root);
-    cout<<"the maximum number is :"<<max;
+    int num =findmax(root);
+    cout<<"highest value is "<<num;
+
+
 
 
 }
