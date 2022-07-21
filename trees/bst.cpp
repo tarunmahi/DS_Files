@@ -6,53 +6,63 @@ struct node{
   node*right;
 };
 node*newnode(int x){
-  struct node*temp=new node();
-  temp->data=x;
-  temp->left=temp->right=NULL;
-  return temp;
+ node*temp = new node();
+ temp->data=x;
+ temp->left=temp->right=NULL;
+ return temp;
 }
-node*insert(node*root,int y){
-  node*temp=newnode(y);
-  if(root==NULL){
-    root=temp;
+node*insert(node*root,int val){
+  node*temp=newnode(val);
+  if(root==NULL)root=temp;
+  else if(val<=root->data){
+    root->left=insert(root->left,val);
   }
-  else if(temp->data<=root->data){
-    root->left=insert(root->left,y);
+  else if(val>=root->data){
+    root->right=insert(root->right,val);
   }
-   else if(temp->data>=root->data){
-        root->right=insert(root->right,y);
-    }
   return root;
 }
-bool change(node*root,int num){
-  if(root==NULL)return false;
-  else if(root->data==num)return true;
-  else if(num<=root->data)
-    return change(root->left,num);
-  
-  else return change(root->right,num);
+bool ispresent(node*root,int num){
+ if(root==NULL)return false;
+ else if(num==root->data)return true;
+ else if(num<=root->data){
+  return ispresent(root->left,num);
+ }
+ else return ispresent(root->right,num);
 }
 int max(node*root){
   if(root==NULL)return -1;
   while(root->right!=NULL){
-    root=root->right;
+        root=root->right;
   }
   return root->data;
-
+}
+int min(node*root){
+  if(root==NULL)return -1;
+  while(root->left!=NULL){
+    root=root->left;
+  }
+  return root->data;
 }
 int main(){
   node*root=NULL;
-  root=insert(root,12);
-  root=insert(root,2);
-  root=insert(root,1);
-  root=insert(root,19);
-  root=insert(root,120);
-  root=insert(root,15);
+  root=insert(root,10);
+   root=insert(root,100);
+    root=insert(root,1000);
+     root=insert(root,1023);
+      root=insert(root,101);
+       root=insert(root,1011);
+        root=insert(root,1034);
+         root=insert(root,1056);
+          root=insert(root,1);
   int num;
-  cout<<"enter the nnumber ";
+  cout<<"enter number to search\n";
   cin>>num;
-  if(change(root,num))cout<<"number found";
-  else cout<<"mnumber not found";
+  if(ispresent(root,num))cout<<"number found";
+  else cout<<"number not found";
+  int minval=min(root);
   int maxval =max(root);
-  cout<<maxval;
-  }
+  cout <<"min value is "<<minval<<"\n Max value is "<<maxval;
+
+
+}
