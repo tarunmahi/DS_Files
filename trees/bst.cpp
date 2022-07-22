@@ -44,6 +44,10 @@ int min(node*root){
   }
   return root->data;
 }
+int findheight(node*root){
+if(root==NULL)return -1;
+return max(findheight(root->left),findheight(root->right)) +1;
+}
 int main(){
   node*root=NULL;
   root=insert(root,10);
@@ -62,7 +66,8 @@ int main(){
   else cout<<"number not found";
   int minval=min(root);
   int maxval =max(root);
-  cout <<"min value is "<<minval<<"\n Max value is "<<maxval;
+  int height =findheight(root);
+  cout <<"min value is "<<minval<<"\n Max value is "<<maxval<<"\n"<<"the height is "<<height;
 
 
 }
