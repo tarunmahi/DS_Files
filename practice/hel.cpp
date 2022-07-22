@@ -33,4 +33,7 @@ int main(){
         root=insert(root,21);
          root=insert(root,90);
           root=insert(root,1);
+    int num;
+    cout<<"enter number to search ";
+    cin>>num;
 }
