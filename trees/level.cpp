@@ -34,6 +34,25 @@ else if(val>=root->data){
 return root;
 }
 
+void inorder(node*root){
+    if(root==NULL)return;
+    cout<<" "<<root->data;
+    inorder(root->left);
+    inorder(root->right);
+}
+void postorder(node*root){
+    if(root==NULL)return;
+    postorder(root->left);
+    postorder(root->right);
+    cout<<" "<<root->data;
+}
+void preorder(node*root){
+    if(root==NULL)return;
+    cout<<" "<<root->data;
+    preorder(root->left);
+    preorder(root->right);
+}
+
 int main() {
 	/*Code To Test the logic
 	  Creating an example tree
@@ -49,4 +68,9 @@ int main() {
 	root = Insert(root,'A'); root = Insert(root,'C');
 	//Print Nodes in Level Order. 
 	LevelOrder(root);
+    cout<<"\n";
+    inorder(root);
+    cout<<"\n";
+    postorder(root);
+
 }
