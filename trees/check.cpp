@@ -36,7 +36,31 @@ void levelorder(node*root){
         if(root->right!=NULL)q.push(root->right);
         q.pop();
     }
+}
+void inorder(node*root){
+    if(root==NULL)return;
+    inorder(root->left);
+    cout<<" "<<root->data;
+    inorder(root->right);
+}
+void postorder(node*root){
+    if(root==NULL)return;
+    inorder(root->left);
+    inorder(root->right);
+    cout<<" "<<root->data;
+}
+void preorder(node*root){
+    if(root==NULL)return;
+     cout<<" "<<root->data;
+    inorder(root->left);
+    inorder(root->right);
+}
 
+bool searche(node*root,int val){
+    if(root==NULL)return false;
+    else if(val==root->data)return true;
+    else if(val<=root->data) return searche(root->left,val);
+    else if(val>=root->data) return searche(root->right,val);
 }
 int main(){
     node*root=NULL;
@@ -50,6 +74,10 @@ int main(){
            root=insert(root,10);
             root=insert(root,33);
              root=insert(root,123);
-    levelorder(root);
+    inorder(root);
+    cout<<"\n";
+    postorder(root);
+    cout<<"\n";
+    preorder(root);
     
 }
