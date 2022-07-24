@@ -14,8 +14,9 @@ node*newnode(int x){
     return temp;
 }
 node*insert(node*root,int val){
+    node*temp=newnode(val);
     if(root==NULL){
-        root=newnode(val);
+        root=temp;
     }
     else if(val<=root->data){
         root->left=insert(root->left,val);
@@ -25,43 +26,7 @@ node*insert(node*root,int val){
     }
     return root;
 }
-void levelorder(node*root){
-    if(root==NULL)return;
-    queue<node*> q;
-    q.push(root);
-    while(!q.empty()){
-        node*temp=q.front();
-        cout<<" "<<temp->data;
-        if(root->left!=NULL)q.push(root->left);
-        if(root->right!=NULL)q.push(root->right);
-        q.pop();
-    }
-}
-void inorder(node*root){
-    if(root==NULL)return;
-    inorder(root->left);
-    cout<<" "<<root->data;
-    inorder(root->right);
-}
-void postorder(node*root){
-    if(root==NULL)return;
-    inorder(root->left);
-    inorder(root->right);
-    cout<<" "<<root->data;
-}
-void preorder(node*root){
-    if(root==NULL)return;
-     cout<<" "<<root->data;
-    inorder(root->left);
-    inorder(root->right);
-}
 
-bool searche(node*root,int val){
-    if(root==NULL)return false;
-    else if(val==root->data)return true;
-    else if(val<=root->data) return searche(root->left,val);
-    else if(val>=root->data) return searche(root->right,val);
-}
 int main(){
     node*root=NULL;
     root=insert(root,15);
@@ -74,10 +39,6 @@ int main(){
            root=insert(root,10);
             root=insert(root,33);
              root=insert(root,123);
-    inorder(root);
-    cout<<"\n";
-    postorder(root);
-    cout<<"\n";
-    preorder(root);
-    
+    if(isbst(root))cout<<"tree is a bst";
+    else cout<<"not balanced";
 }
