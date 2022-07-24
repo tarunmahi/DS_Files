@@ -41,6 +41,14 @@ bool isbst(node*root){
     if(isbst(root->left)&&isbst(root->right)&&isless(root->left,root->data)&&isgreat(root->right,root->data))return true;
     else return false;
 }
+int height(node*root){
+    if(root==NULL)return -1;
+    return max(height(root->left),height(root->right))+1;
+}/*
+int findheight(node*root){
+if(root==NULL)return -1;
+return max(findheight(root->left),findheight(root->right)) +1;
+}*/
 int main(){
     node*root=NULL;
     root=insert(root,15);
@@ -53,6 +61,8 @@ int main(){
            root=insert(root,10);
             root=insert(root,33);
              root=insert(root,123);
-    if(isbst(root))cout<<"tree is a bst";
-    else cout<<"not balanced";
+
+    int height1 =height(root);
+    cout<<"\n";
+    cout<<height1;
 }
