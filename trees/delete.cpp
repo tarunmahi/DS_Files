@@ -41,35 +41,35 @@ bool isbst(node*root){
 }
 node*findmin(node*root){
     while(root->left!=NULL){
-        root=root->left;
-    }
+         root=root->left;
+    } 
+    return root;
 }
-node*delet(node*root,int y){
+node*delet(node*root,int val){
     if(root==NULL)return root;
-    else if(y<root->data)root->left=delet(root->left,y);
-    else if(y>root->data)root->right=delet(root->right,y);
+    else if(val<root->data)root->left=delet(root->left,val);
+    else if(val>root->data)root->right=delet(root->right,val);
     else{
         if(root->left==NULL&&root->right==NULL){
-            delete root;
+            delete(root);
             root=NULL;
         }
         else if(root->left==NULL){
             node*temp=root;
-            root=root->right;
-            delete(temp);
+          root=root->right;
+          free(temp);
         }
         else if(root->right==NULL){
             node*temp=root;
             root=root->left;
-            delete(temp);
+            free(temp);
         }
         else{
             node*temp=findmin(root->right);
             root->data=temp->data;
             root->right=delet(root->right,root->data);
-            delete(temp);
+            free(temp);
         }
-
     }
     return root;
 }
@@ -91,7 +91,8 @@ int main(){
              root=insert(root,10);
               root=insert(root,33);
                root=insert(root,123);
+    root=delet(root,76);
     root=delet(root,123);
-
+    root=delet(root,5);
     inorder(root);
 }
