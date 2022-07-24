@@ -26,7 +26,21 @@ node*insert(node*root,int val){
     }
     return root;
 }
-
+bool isless(node*root,int num){
+    if(root==NULL)return true;
+    if(root->data<num&&isless(root->left,num)&&isless(root->right,num))return true;
+    else return false;
+}
+bool isgreat(node*root,int num){
+    if(root==NULL)return true;
+    if(root->data>num &&isgreat(root->left,num)&&isgreat(root->right,num))return true;
+    else return false;
+}
+bool isbst(node*root){
+    if(root==NULL)return true;
+    if(isbst(root->left)&&isbst(root->right)&&isless(root->left,root->data)&&isgreat(root->right,root->data))return true;
+    else return false;
+}
 int main(){
     node*root=NULL;
     root=insert(root,15);
