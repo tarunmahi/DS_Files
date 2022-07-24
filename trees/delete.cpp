@@ -43,34 +43,35 @@ node*findmin(node*root){
     while(root->left!=NULL){
         root=root->left;
     }
-    return root;
 }
-node*delet(node*root,int x){
-   if(root==NULL)return root;
-   else if(x<root->data)root->left=delet(root->left,x);
-   else if(x>root->data)root->right=delet(root->right,x);
-   else{
-    if(root->left==NULL&&root->right==NULL){
-        delete(root);
-        root=NULL;
-    }
-    else if(root->left==NULL){
-        node*temp=root;
-        root=root->right;
-        delete(temp);
-    }
-    else if(root->right==NULL){
-        node*temp=root;
-        root=root->left;
-        delete(temp);
-    }
+node*delet(node*root,int y){
+    if(root==NULL)return root;
+    else if(y<root->data)root->left=delet(root->left,y);
+    else if(y>root->data)root->right=delet(root->right,y);
     else{
-        node*temp=findmin(root->right);
-        root->data=temp->data;
-        root->right=delet(root->right,temp->data);
+        if(root->left==NULL&&root->right==NULL){
+            delete root;
+            root=NULL;
+        }
+        else if(root->left==NULL){
+            node*temp=root;
+            root=root->right;
+            delete(temp);
+        }
+        else if(root->right==NULL){
+            node*temp=root;
+            root=root->left;
+            delete(temp);
+        }
+        else{
+            node*temp=findmin(root->right);
+            root->data=temp->data;
+            root->right=delet(root->right,root->data);
+            delete(temp);
+        }
+
     }
-   }
-   return root;
+    return root;
 }
 void inorder(node*root){
     if(root==NULL)return;
@@ -90,7 +91,7 @@ int main(){
              root=insert(root,10);
               root=insert(root,33);
                root=insert(root,123);
-    root=delet(root,76);
+    root=delet(root,123);
 
     inorder(root);
 }

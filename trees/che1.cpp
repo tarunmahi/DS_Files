@@ -38,7 +38,34 @@ bool isbstutil(node*root,int min,int max){
 
 bool isbst(node*root){
     return isbstutil(root,INT_MIN,INT_MAX);
-}
+}/*
+node*delet(node*root,int x){
+   if(root==NULL)return root;
+   else if(x<root->data)root->left=delet(root->left,x);
+   else if(x>root->data)root->right=delet(root->right,x);
+   else{
+    if(root->left==NULL&&root->right==NULL){
+        delete(root);
+        root=NULL;
+    }
+    else if(root->left==NULL){
+        node*temp=root;
+        root=root->right;
+        delete(temp);
+    }
+    else if(root->right==NULL){
+        node*temp=root;
+        root=root->left;
+        delete(temp);
+    }
+    else{
+        node*temp=findmin(root->right);
+        root->data=temp->data;
+        root->right=delet(root->right,temp->data);
+    }
+   }}
+   return root;*/
+
 int main(){
     node*root=NULL;
       root=insert(root,15);
