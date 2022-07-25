@@ -18,7 +18,7 @@ node*getnode(int val){
 
 node*insert(node*root,int x){
     if(root==NULL){
-        root=getnode(x);
+        root=getnode(x);;
     }
     else if(x<=root->data){
         root->left=insert(root->left,x);
