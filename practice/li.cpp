@@ -19,17 +19,31 @@ void insert(int x){
      head=temp;
      return;
    }
+   head->prev=temp;
    temp->next=head;
    head=temp;
+
 }
+
 void print(){
     node*temp=head;
     while(temp!=NULL){
-        printf("%d",temp->data);
+        printf("%d => ",temp->data);
         temp=temp->next;
     }
     printf("\n");
-
+}
+void reverse(){
+    node*temp=head;
+    if(temp==NULL)return;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    printf("reversed linked list \n");
+    while(temp!=NULL){
+        printf("%d =>",temp->data);
+        temp=temp->prev;
+    }
 }
 int main(){
     head=NULL;
@@ -39,5 +53,7 @@ int main(){
       insert(38);
       insert(80);
       print();
+      printf("\n");
+      reverse();
 
 }
