@@ -44,7 +44,7 @@ node*findmin(node*root){
          root=root->left;
     } 
     return root;
-}
+}/*
 node*delet(node*root,int val){
     if(root==NULL)return root;
     else if(val<root->data)root->left=delet(root->left,val);
@@ -70,14 +70,18 @@ node*delet(node*root,int val){
             root->right=delet(root->right,root->data);
             free(temp);
         }
+
     }
     return root;
+}*/
+node*delet(node*root,int val){
+    
 }
 void inorder(node*root){
     if(root==NULL)return;
     inorder(root->left);
     cout<<" "<<root->data;
-    inorder(root->right);
+    inorder(root->right);;
 }
 int main(){
     node*root=NULL;
