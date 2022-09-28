@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 struct node{
     int data;
     node*next;
@@ -7,53 +8,113 @@ struct node{
 };
 node*head=NULL;
 
-node*newnode(int val){
+node*newnode(int x){
     node*temp=new node();
-    temp->data=val;
+    temp->data=x;
     temp->next=NULL;
     temp->prev=NULL;
     return temp;
 }
+
 void insertb(int val){
-    node*temp=newnode(val);
+    node*temp=head;
+    node*temp2=newnode(val);
     if(head==NULL){
-        head=temp;
+        temp2=head;
         return;
     }
-    head->prev=temp;
-    temp->next=head;
-    head=temp;
+    temp2->next=head;
+    temp->prev=temp2;
+
 }
 void inserte(int val){
-    node*temp=newnode(val);
-    node*var=head;
+    node*temp=head;
+    node*temp2=newnode(val);
     if(head==NULL){
+        head=temp2;
+        return;
+    }
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=temp2;
+    temp2->prev=temp;
+    
+} 
+void print(){
+    node*temp=head;
+    while (temp!=NULL)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+    printf("\n");
+    
+}
+void delet(int pos){
+    node*temp=head;
+    if(pos==1){
+        head=temp->next;
+        free(temp);
+        return;
+    }
+    for (int i = 0; i < pos-2; i++)
+    {
+        temp=temp->next;
+    }
+    node*temp2=temp->next;
+    node*temp3=temp2->next;
+    temp->next=temp3;
+    temp3->prev=temp;
+    free(temp2);
+    
+}
+void reverse(){
+    node*temp=head;
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    cout<<"reverse linked list is : \n";
+    while(temp!=NULL){
+        cout<<temp->data<<"->";
+        temp=temp->prev;
+    }
+    printf("\n");
+    
+}
+void insert(int val,int pos){
+    node*temp=head;
+    if(pos==1){
+        temp->next=head;
         head=temp;
         return;
     }
-    while (var->next!=NULL)
+    for (int i = 0; i < pos-2; i++)
     {
-        var=var->next;
+        temp=temp->next;
     }
-    var->next=temp;
-    temp->prev=var;
+    node*te=newnode(val);
+    node*temp2=temp->next;
+    te->prev=temp;
+    te->next=temp2;
+    temp->next=te;
+    temp2->prev=te;
     
+
 }
-void insert(int val,int pos){}
-void reverse(){}
-void print(){}
-void delet(int pos){}
 int main(){
-    inserte(5);
-    insertb(2);
+     inserte(5);
+    inserte(2);
     inserte(4);
-    insertb(8);
+    inserte(8);
     inserte(10);
     print();
     reverse();
     delet(1);
     delet(3);
     print();
-    insert(43,2);
+    insert(43,1);
     print();
 }
