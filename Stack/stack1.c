@@ -11,8 +11,7 @@ void push(int x){
 void pop(){
     struct node*temp=top;
     top=temp->link;
-    free(temp);
-    
+    free(temp);   
 }
 void print(){
     struct node*temp=top;
