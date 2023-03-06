@@ -64,8 +64,7 @@ void inserte(int x){
 //print function /traversing call function
 void print(){
     struct node*temp=head;
-    while (temp!=NULL)
-    {
+    while(temp!=NULL){
         printf("%d -> ",temp->data);
         temp=temp->next;
     }

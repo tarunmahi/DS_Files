@@ -1,4 +1,3 @@
-//cpp program for level order traversal
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -72,5 +71,4 @@ int main() {
     inorder(root);
     cout<<"\n";
     postorder(root);
-
 }

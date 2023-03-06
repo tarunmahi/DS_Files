@@ -11,7 +11,7 @@ int getweight(char c){
     switch(c){
         case '+':
         case '-':
-         weight=1;
+         weight=1;;
          break;
         case '*':
         case '/':

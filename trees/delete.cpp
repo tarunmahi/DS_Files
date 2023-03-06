@@ -70,7 +70,6 @@ node*delet(node*root,int val){
             root->right=delet(root->right,root->data);
             free(temp);
         }
-
     }
     return root;
 }*/
